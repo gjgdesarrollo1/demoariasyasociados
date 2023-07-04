@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <!--===============================================================================================-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="assets/materialdesign/materialdesignicons.min.css" />
+    <!--===============================================================================================-->
+    <style>
+        .subheader {
+            background-image: url("imagenes/banner.png");
+            background-repeat: no-repeat;
+            background-color: #24458f !important;
+            background-position: center;
+            background-size: 800px;
+            height: 268px;
+        }
+
+        /* .nav-item {
+            background-color: #24458f !important;
+            margin: 1px;
+            padding: 1px;
+        } */
+
+        /* .nav-item a {
+            color: #ffffff;
+        } */
+
+        .modulos .card-body {
+            padding: 0px;
+        }
+
+        .modulos .card-body p {
+            margin: 0px;
+        }
+
+        .modulos .col-sm-2 {
+            padding: 0px;
+            width: 100px;
+        }
+
+        .modulos card {
+            margin: 0px;
+            padding: 2px;
+        }
+
+        .colortitulos {
+            background-color: #eba208;
+            color: #ffffff;
+        }
+
+        .sizecard {
+            height: 320px;
+            max-height: 320px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+        }
+
+        .minifecha {
+            width: 40px;
+            max-width: 40px;
+        }
+
+        .divcumple {
+            height: 200px;
+            max-height: 200px;
+            overflow: auto;
+        }
+
+        .divactividades {
+            height: 245px;
+            max-height: 245px;
+            overflow: auto;
+        }
+
+        .cardopciones {
+            margin: 5px;
+        }
+
+        .cardopciones .card:hover {
+            transition: transform 0.5s;
+            transform: scale(1.03);
+            background-color: #24458f !important;
+        }
+
+        .cardopciones .card {
+            color: #24458f !important;
+        }
+
+        .cardopciones .card:hover span,
+        .cardopciones .card:hover p {
+            color: #ffffff !important;
+        }
+
+        .divactividades span,
+        .carousel-item a {
+            background-color: #24458f !important;
+        }
+
+        .carousel-item a:hover {
+            transition: transform 0.5s;
+            transform: scale(1.03);
+        }
+
+        .accordion-button::after {
+            margin: auto;
+            color: #ffffff !important;
+        }
+
+        .accordion-button {
+            background-color: #24458f !important;
+        }
+
+        .accordion-button.collapsed::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-button:not(.collapsed)::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23fff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        }
+
+        .accordion-item:last-of-type .accordion-button.collapsed,
+        .accordion-item:last-of-type .accordion-button.collapsed {
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .list-group-item:first-child {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .accordion-item .btn {
+            border-radius: 0 !important;
+        }
+
+        .accordion .dropdown-toggle {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .dropdown-toggle {
+            white-space: unset;
+        }
+
+        .accordion label {
+            float: left;
+        }
+
+        .accordion button {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .card .colortitulos {
+            text-shadow: 1px 1px 1px #000;
+        }
+
+        .mdi-exit-to-app {
+            background-color: #24458f !important;
+            color: #ffffff;
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column h-100">
+    <div class="cabecera">
+        <div class="subheader"></div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><span class="mdi mdi-account mdi-24px"></span>&nbsp;Bienvenido |
+                    Usuario</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                    aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarScroll">
+                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link" aria-current="page">
+                                    Miercoles, 28 de junio de 2023 | TC 3.989
+                            </a>
+                        </li> -->
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Search">
+                        <button class="btn btn-outline-success mdi mdi-magnify" type="submit"></button>
+                    </form>
+                    <a class="btn mdi mdi-exit-to-app m-2" href="login.html">&nbsp;Salir</a>
+                </div>
+            </div>
+        </nav>
+        <hr class="m-0" />
+    </div>
+    <div class="cuerpo">
+        <div class="container-fluid pb-5">
+            <div class="row">
+                <div class="col-xl-2">
+                    <div class="accordion py-4" id="accordionPanelsStayOpenExample">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed p-0 text-center" type="button"
+                                    data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne"
+                                    aria-expanded="false" aria-controls="panelsStayOpen-collapseOne"></button>
+                            </h2>
+                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                                <div class="accordion-body p-0">
+                                    <ul class="list-group">
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Lista</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Blog</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button class="btn dropdown-toggle text-start text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Continuidad de Negocios</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Opereciones</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">GDH</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Tecnologias Informaci&oacute;n</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Regi&oacute;n Norte</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Regi&oacute;n Sur</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Comercial</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">GAI</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Otros Aplicativos</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="btn-group dropend">
+                                            <button type="button" class="btn dropdown-toggle text-end border"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <label class="text-start">Biblioteca</label>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                                <li>
+                                                    <a class="dropdown-item" href="#">Menu item</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <ul class="list-group">
+                                    <a href="#"
+                                        class="list-group-item list-group-item-action list-group-item-warning colortitulos">Enlace
+                                        Interes</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Correo Arias &
+                                        Asociados</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Oficina Virtual</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Configuraciones Web</a>
+                                    <a href="#" class="list-group-item list-group-item-action">Archivo digital</a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-10">
+                    <!--<div class="col-xl-10 bg-secondary bg-opacity-25">-->
+                    <div class="container-fluid">
+                        <section>
+                            <div></div>
+                            <div class="container py-4 modulos">
+                                <!--<h2 class="py-3">Carga de Informacion</h2>-->
+                                <div class="row justify-content-center">
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-google-classroom"></span>
+                                                    <p class="text-nowrap">Capacitaci&oacute;n</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-book-open-variant"></span>
+                                                    <p class="text-nowrap">Revista</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-newspaper-variant-outline"></span>
+                                                    <p class="text-nowrap">Noticias</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-folder-outline"></span>
+                                                    <p class="text-nowrap">Directorio</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-plus-circle"></span>
+                                                    <p class="text-nowrap">Beneficios</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-account-convert"></span>
+                                                    <p class="text-nowrap">Innovando</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-image-multiple-outline"></span>
+                                                    <p class="text-nowrap">Biblioteca</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-sm-2 col-md-2 cardopciones">
+                                        <a class="text-decoration-none" href="#">
+                                            <div class="card">
+                                                <div class="card-body text-center">
+                                                    <span class="mdi mdi-36px mdi-star"></span>
+                                                    <p class="text-nowrap">Clasificados</p>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+
+                        </section>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card sizecard shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <span class="badge colortitulos">Comunicados Internos</span>
+                                        </h5>
+                                        <div id="carouselExampleSlidesOnly" class="carousel slide"
+                                            data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="4000">
+                                                    <div class="p-4">
+                                                        <h4>
+                                                            Campa&ntilde;a m&eacute;dica
+                                                            <span class="badge bg-secondary">Nuevo</span>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            Acercate a nuestra &aacute;rea de recursos
+                                                            humanos para separar tu cita.
+                                                        </p>
+                                                        <a href="#" class="btn btn-primary">Mas informaci&oacute;n</a>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="4000">
+                                                    <div class="p-4">
+                                                        <h4>
+                                                            Renovaci&oacute;n de contratos
+                                                            <span class="badge bg-secondary">Nuevo</span>
+                                                        </h4>
+                                                        <p class="card-text">
+                                                            Si tu nombre esta en la lista dale click al
+                                                            bot&oacute;n
+                                                        </p>
+                                                        <a href="#" class="btn btn-primary">Mas informaci&oacute;n</a>
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="4000">
+                                                    <div class="p-4">
+                                                        <h4>Bonos</h4>
+                                                        <p class="card-text">
+                                                            Todos los bono se entregaran automaticamente, si
+                                                            quieres saber si tienes un bono dale click al
+                                                            bot&oacute;n
+                                                        </p>
+                                                        <a href="#" class="btn btn-primary">Mas informaci&oacute;n</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card sizecard shadow-sm">
+                                    <div class="card-body">
+                                        <img src="imagenes/torta1.gif"
+                                            style="position: absolute; top: 30%; right: 24%" />
+                                        <h5 class="card-title">
+                                            <span class="badge colortitulos">Cumpleaños</span>
+                                        </h5>
+                                        <?php 
+                                            $meses = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"); ?>
+                                        <h4>
+                                            Del
+                                            <?= "01" ?>
+                                            al
+                                            <?= date("t") ?>
+                                            de
+                                            <?= $meses[date('n') - 1] ?>
+                                        </h4>
+                                        <div class="table-responsive divcumple">
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <td class="minifecha">1</td>
+                                                    <td>Miss Patti Hackett</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">3</td>
+                                                    <td>Ruth Schowalter</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">5</td>
+                                                    <td>Kristen Gerlach</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">5</td>
+                                                    <td>Claude Simonis</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">6</td>
+                                                    <td>Ashley McKenzie</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">8</td>
+                                                    <td>Carlos Daugherty</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">8</td>
+                                                    <td>Rosalie Carter</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">8</td>
+                                                    <td>Peter Sanford DDS</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">11</td>
+                                                    <td>Alton Hermiston</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">13</td>
+                                                    <td>Ms. Frank Davis</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">14</td>
+                                                    <td>Shelia Walsh MD</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">14</td>
+                                                    <td>Jeannie Johns DDS</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">14</td>
+                                                    <td>Wesley Harris</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">14</td>
+                                                    <td>Lora Considine Jr.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">17</td>
+                                                    <td>Ebony Marquardt</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">18</td>
+                                                    <td>Michael Boehm</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">22</td>
+                                                    <td>Faye Larkin</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">23</td>
+                                                    <td>Amy MacGyver</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">23</td>
+                                                    <td>Belinda Kiehn</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="minifecha">28</td>
+                                                    <td>Ralph Bauch</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card sizecard shadow-sm">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <span class="badge colortitulos">Reconocimientos</span>
+                                        </h5>
+                                        <div id="carouselExampleSlidesOnly" class="carousel slide"
+                                            data-bs-ride="carousel">
+                                            <div class="carousel-inner">
+                                                <div class="carousel-item active" data-bs-interval="3000">
+                                                    <div class="text-center pt-4">
+                                                        <h4 class="card-title">KARLA TARAZONA MIRANDA</h4>
+                                                        <p class="card-text">
+                                                            ¡Felicitaciones! por tus esfuerzo y <br />logros
+                                                            en nuestra compañia
+                                                        </p>
+                                                        <img src="imagenes/medalla.png" class="img-fluid" alt="..."
+                                                            style="width: 100px" />
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="3000">
+                                                    <div class="text-center pt-4">
+                                                        <h4 class="card-title">PEDRO LOPEZ GOMEZ</h4>
+                                                        <p class="card-text">
+                                                            ¡Felicitaciones! por tus esfuerzo y <br />logros
+                                                            en nuestra compañia
+                                                        </p>
+                                                        <img src="imagenes/medalla.png" class="img-fluid" alt="..."
+                                                            style="width: 100px" />
+                                                    </div>
+                                                </div>
+                                                <div class="carousel-item" data-bs-interval="3000">
+                                                    <div class="text-center pt-4">
+                                                        <h4 class="card-title">CARLA TORRES GALINDO</h4>
+                                                        <p class="card-text">
+                                                            ¡Felicitaciones! por tus esfuerzo y <br />logros
+                                                            en nuestra compañia
+                                                        </p>
+                                                        <img src="imagenes/medalla.png" class="img-fluid" alt="..."
+                                                            style="width: 100px" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="card sizecard shadow">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <span class="badge colortitulos">Actividades</span>
+                                        </h5>
+                                        <div class="table-responsive divactividades">
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <td class="text-center minifecha">
+                                                        <span class="badge text-bg-primary">31<br />Oct</span>
+                                                    </td>
+                                                    <td>Halloween Criollo 2023</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span class="badge text-bg-primary">12<br />
+                                                            May</span>
+                                                    </td>
+                                                    <td>Dia de la Madre</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span class="badge text-bg-primary">18 <br />Jun</span>
+                                                    </td>
+                                                    <td>Dia del Padre</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span class="badge text-bg-primary">25 <br />Dic</span>
+                                                    </td>
+                                                    <td>Fiesta de Navidad</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-center">
+                                                        <span class="badge text-bg-primary">31 <br />Dic</span>
+                                                    </td>
+                                                    <td>Fiesta de Fin de Año</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
